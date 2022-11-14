@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-areas: 
+  "di di di di"
+  "di di di di"
+  "ac ac divide multiply"
+  "seven eight nine minus"
+  "four five six plus"
+  "one two three equals"
+  "zero zero decimal equals"
+  ;
+  width: auto;
+  max-width: 400px;
+  background-color: var(--APP-BG-COLOR);
+  padding: 0.25rem;
+  margin: 8rem auto;
+
+}
+
+html{
+  background-color: var(--BODY-BG-COLOR);
+}
+
+:root{
+  --BODY-BG-COLOR: bisque;
+  --FONT-COLOR: #333;
+  --BORDER-RADIUS: 15px;
+  --APP-BG-COLOR: black;
+}
+
+
+
+#one {
+  grid-area: one;
+}
+#two {
+  grid-area: two;
+}
+#three {
+  grid-area: three;
+}
+#one {
+  grid-area: one;
+}
+#four {
+  grid-area: four;
+}
+#five {
+  grid-area: five;
+}
+#one {
+  grid-area: one;
+}
+#six {
+  grid-area: six;
+}
+#seven {
+  grid-area: seven;
+}
+#eight {
+  grid-area: eight;
+}
+#eight {
+  grid-area: eight;
+}
+#nine {
+  grid-area: nine;
+}
+#zero {
+  grid-area: zero;
+}
+#add {
+  grid-area: plus;
+}
+#subtract {
+  grid-area: minus;
+}
+#multiply {
+  grid-area: multiply;
+}
+#divide {
+  grid-area: divide;
+}
+#equals {
+  grid-area: equals;
+  background-color: green;
+}
+#decimal {
+  grid-area: decimal;
+}
+
+#clear {
+  grid-area: ac;
+  background-color: firebrick
+}
+
+.btn{
+  background-color:lightgray;
+  min-height: 50px;
+  font-size: 1.25rem;
+}
+
+
+#topPanel{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  grid-area: di;
+  color: white;
+  font-family: monospace;
+  font-size: 1.5rem;
+}
+
+.display{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: bottom;
+  padding: 0;
+}
