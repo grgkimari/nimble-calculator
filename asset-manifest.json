@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/grgkimari.github.io/nimble-calculator/static/css/main.a86ca009.css",
+    "main.js": "/grgkimari.github.io/nimble-calculator/static/js/main.a5a264d8.js",
+    "index.html": "/grgkimari.github.io/nimble-calculator/index.html",
+    "main.a86ca009.css.map": "/grgkimari.github.io/nimble-calculator/static/css/main.a86ca009.css.map",
+    "main.a5a264d8.js.map": "/grgkimari.github.io/nimble-calculator/static/js/main.a5a264d8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a86ca009.css",
+    "static/js/main.a5a264d8.js"
+  ]
+}
