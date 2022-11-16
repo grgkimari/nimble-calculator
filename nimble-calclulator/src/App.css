@@ -109,7 +109,7 @@ html{
   grid-area: di;
   color: white;
   font-family: monospace;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .display{
@@ -119,4 +119,9 @@ html{
   justify-content: flex-end;
   align-items: bottom;
   padding: 0;
+}
+
+#previous{
+  font-size: 1.15rem;
+  color: burlywood;
 }
