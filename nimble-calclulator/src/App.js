@@ -39,8 +39,8 @@ function App() {
 
   const addToDisplay = (event) => {
     let char = event.target.innerHTML
+    let newStr = state.bottomDisplayContent
     const arr = state.bottomDisplayContent.toString().trim().split(' ').filter((elem => elem !== ""))
-    console.log(JSON.stringify(arr))
     if(char === '.'){
       
       if(/[.]/.test(arr[arr.length - 1])){
@@ -62,11 +62,18 @@ function App() {
       dispatch(action)
     }
     else if(/^[/*+-]$/.test(char)){
+    if(char != '-' && /[-+*/]/.test(arr[arr.length - 1])){
+      
+        while(/[-/*+]/.test(arr[arr.length - 1])){
+          newStr = newStr.slice(0, newStr.length - 3)
+          arr.pop()
+        }
+      }
       
       let action = {
         type : "UPDATE-BOTTOM-DISPLAY",
         payload: {
-          bottomDisplayContent: state.bottomDisplayContent += (" " + char + " "),
+          bottomDisplayContent: newStr += (" " + char + " "),
         }
       }
       dispatch(action)
