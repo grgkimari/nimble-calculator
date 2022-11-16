@@ -2,7 +2,8 @@ import './App.css';
 import './Components/Button'
 import Button from './Components/Button';
 import Display from './Components/Display';
-import {useState, useReducer} from 'react'
+import {useReducer} from 'react'
+import ReactDOM from 'react-dom'
 
 const initialState = {
   topDisplayContent : "",
@@ -14,7 +15,6 @@ const initialState = {
 const mainReducer = (state = initialState, action) =>{
   switch (action.type){
     case "SET-RESULT":
-      console.log("SETTING RESULT : \n", JSON.stringify(action))
       return {
         topDisplayContent: state.bottomDisplayContent,
         bottomDisplayContent: action.payload.result,
@@ -22,12 +22,7 @@ const mainReducer = (state = initialState, action) =>{
       }
 
     case 'CLEAR': 
-      return {
-        topDisplayContent : "",
-        bottomDisplayContent : "0",
-        result: null,
-      
-      }   
+      return Object.assign({}, initialState)
 
     case 'UPDATE-BOTTOM-DISPLAY':
       return Object.assign({}, state, {bottomDisplayContent : action.payload.bottomDisplayContent})
@@ -44,15 +39,20 @@ function App() {
 
   const addToDisplay = (event) => {
     let char = event.target.innerHTML
-    const arr = state.bottomDisplayContent.trim().split(' ')
+    const arr = state.bottomDisplayContent.toString().trim().split(' ').filter((elem => elem !== ""))
+    console.log(JSON.stringify(arr))
     if(char === '.'){
       
       if(/[.]/.test(arr[arr.length - 1])){
         return
       }
+      
     }
 
     if(state.bottomDisplayContent === "0"){
+      if(/[-/*+]/.test(char)){
+        return
+      }
       let action = {
         type : "UPDATE-BOTTOM-DISPLAY",
         payload: {
@@ -62,10 +62,11 @@ function App() {
       dispatch(action)
     }
     else if(/^[/*+-]$/.test(char)){
+      
       let action = {
         type : "UPDATE-BOTTOM-DISPLAY",
         payload: {
-          bottomDisplayContent: state.bottomDisplayContent += (" " + event.target.innerHTML + " "),
+          bottomDisplayContent: state.bottomDisplayContent += (" " + char + " "),
         }
       }
       dispatch(action)
@@ -83,12 +84,12 @@ function App() {
   const clearAll = (event) => {
     let action = {
       type : "CLEAR",
+      payload : null
     }
-    dispatch(action)
+    ReactDOM.flushSync( () => dispatch(action))
   }
 
   const calculate = () => {
-
    let action = {
     type : "SET-RESULT",
     payload : {
@@ -121,8 +122,8 @@ function App() {
       <Button id="zero" btnText="0" clickFunction={addToDisplay} className="btn"></Button>
       <Button id="decimal" btnText="." clickFunction={addToDisplay} className="btn"></Button>
       <Button id="clear" btnText="AC" clickFunction={clearAll}></Button>
-
     </div>
+    
   );
 }
 
