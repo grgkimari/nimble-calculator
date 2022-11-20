@@ -1,2 +1,4 @@
 # nimble-calculator
-A basic calculator implemented in javascript
+A basic online calculator implemented in ReactJS
+
+>This project was undertaken as part of the freeCodeCamp front-end  frameworks certification path.
